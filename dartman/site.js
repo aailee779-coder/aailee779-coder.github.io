@@ -130,3 +130,27 @@ $$('.ticker .track').forEach(t=>{t.innerHTML+=t.innerHTML;});
 /* year */
 $$('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
 })();
+
+/* ===== v4 shop-style home (dartshopper structure) ===== */
+(()=>{
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* toast */
+function toast(m){let t=$('.toast');if(!t){t=document.createElement('div');t.className='toast';document.body.appendChild(t);}t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2600);}
+/* hero slider */
+const sl=$('[data-slider]');if(sl){const slides=$$('.slide',sl),dots=$$('.dots button',sl);let i=0,t;const go=n=>{i=(n+slides.length)%slides.length;slides.forEach((s,k)=>s.classList.toggle('on',k===i));dots.forEach((d,k)=>d.classList.toggle('on',k===i));};
+  const arm=()=>{clearInterval(t);if(!reduce)t=setInterval(()=>go(i+1),5500);};dots.forEach((d,k)=>d.addEventListener('click',()=>{go(k);arm();}));arm();
+  let x0=null;sl.addEventListener('pointerdown',e=>x0=e.clientX);sl.addEventListener('pointerup',e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));arm();}});}
+/* product rows */
+$$('[data-row]').forEach(row=>{const blk=row.closest('.blk');const step=()=>row.firstElementChild?row.firstElementChild.getBoundingClientRect().width+14:300;
+  $('[data-prev]',blk)?.addEventListener('click',()=>row.scrollBy({left:-step()*2,behavior:'smooth'}));$('[data-next]',blk)?.addEventListener('click',()=>row.scrollBy({left:step()*2,behavior:'smooth'}));});
+/* wishlist + cart counters (demo) */
+let wish=0,cart=0;const wc=$('[data-wish-count] b'),cc=$('[data-cart-count]');
+$$('[data-wish]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const on=b.classList.toggle('on');wish+=on?1:-1;if(wc)wc.textContent=wish;toast(on?'Saved to wishlist':'Removed from wishlist');}));
+$$('[data-add]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();const q=b.textContent.trim()==='Quote';if(q){location.href='/dartman/contact/#quote';return;}cart++;if(cc)cc.textContent=cart;toast(`${b.dataset.add} added to cart (demo)`);}));
+$$('[data-open-cart]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();toast(cart?`${cart} item${cart>1?'s':''} in cart — demo, checkout lives on the DAYIN Sport store`:'Your cart is empty (demo)');}));
+$$('form[data-demo]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();toast(f.dataset.demo);f.reset();}));
+$$('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
+/* mega menu: keyboard + touch */
+$$('.catnav .has-menu>a').forEach(a=>a.addEventListener('click',e=>{if(matchMedia('(hover:none)').matches){e.preventDefault();a.parentElement.classList.toggle('open');}}));
+})();
