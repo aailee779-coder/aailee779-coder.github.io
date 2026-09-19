@@ -62,7 +62,7 @@ async function mountOne(c){if(c.__edmini||c.__busy)return;c.__busy=1;const mod=a
   c.classList.add('ready');
   if(c.dataset.scrub&&!reduce){ScrollTrigger.create({trigger:c.closest('section')||c.parentElement,start:'top top',end:'bottom top',scrub:true,onUpdate:st=>api.setProgress(st.progress)});}
   const root=c.closest('[data-config]')||document;
-  $$('.sw',root).forEach(b=>b.addEventListener('click',()=>{api.setFinish(b.dataset.finish);$$('.sw',root).forEach(x=>x.classList.toggle('on',x===b));const nm=$('.fin-name b',root);nm&&(nm.textContent=mod.FINISHES[b.dataset.finish].name);const photo=$('[data-variant-photo]',root);photo&&(photo.src=`/assets/dartman/variant-${b.dataset.finish}.webp`);}));
+  $$('.sw',root).forEach(b=>b.addEventListener('click',()=>{api.setFinish(b.dataset.finish);$$('.sw',root).forEach(x=>x.classList.toggle('on',x===b));const nm=$('.fin-name b',root);nm&&(nm.textContent=mod.FINISHES[b.dataset.finish].name);const photo=$('[data-variant-photo]',root);photo&&(photo.src=`/assets/gen/dm-finish-${b.dataset.finish}.webp`);}));
   const fx=$('[data-ledfx]',root);fx&&fx.addEventListener('click',()=>{const on=!fx.classList.contains('on');fx.classList.toggle('on',on);api.setLedFx(on);});}
 (()=>{const canv=$$('canvas[data-edmini]');if(!canv.length)return;if(!('WebGLRenderingContext' in window)){canv.forEach(c=>c.parentElement.classList.add('static'));return;}
   canv.forEach(c=>{const isHero=c.dataset.camera==='hero';
@@ -71,6 +71,16 @@ async function mountOne(c){if(c.__edmini||c.__busy)return;c.__busy=1;const mod=a
     else{new IntersectionObserver((es,ob)=>{es.forEach(e=>{if(e.isIntersecting){ob.disconnect();mountOne(c);}})},{rootMargin:'300px'}).observe(c);}
   });})();
 
+/* scroll-scrubbed frame sequence */
+$$('[data-seq]').forEach(sec=>{const tpl=sec.dataset.seq,N=+sec.dataset.n,c=$('canvas',sec),x=c.getContext('2d'),caps=$$('.cap',sec),prog=$('.prog i',sec);const imgs=new Array(N);let cur=-1,loaded=0;
+  const url=i=>tpl.replace('{i}',String(i).padStart(3,'0'));
+  const load=i=>new Promise(r=>{if(imgs[i])return r(imgs[i]);const im=new Image();im.onload=()=>{imgs[i]=im;loaded++;r(im)};im.onerror=()=>r(null);im.src=url(i);});
+  const draw=i=>{const im=imgs[i];if(!im)return;const W=c.width,H=c.height,s=Math.max(W/im.width,H/im.height),w=im.width*s,h=im.height*s;x.clearRect(0,0,W,H);x.drawImage(im,(W-w)/2,(H-h)/2,w,h);cur=i;};
+  const size=()=>{const r=c.getBoundingClientRect();const d=Math.min(devicePixelRatio,2);c.width=r.width*d;c.height=r.height*d;if(cur>=0)draw(cur);};addEventListener('resize',size);size();
+  (async()=>{await load(0);draw(0);for(let i=1;i<N;i+=6)await load(i);for(let i=1;i<N;i++)load(i);})();
+  const show=p=>{const i=Math.min(N-1,Math.max(0,Math.round(p*(N-1))));if(imgs[i])draw(i);else{load(i).then(()=>{if(Math.abs(cur-i)<=6||cur<0)draw(i)});let k=i;while(k>0&&!imgs[k])k--;if(imgs[k]&&cur!==k)draw(k);}
+    caps.forEach(cp=>cp.classList.toggle('on',p>=+cp.dataset.from&&p<+cp.dataset.to));prog&&prog.style.setProperty('--p',(p*100)+'%');};
+  ScrollTrigger.create({trigger:sec,start:'top top',end:'bottom bottom',scrub:true,onUpdate:st=>show(st.progress)});show(0);});
 /* ROI mini */
 $$('[data-roi]').forEach(r=>{
   const g=k=>$(`[name=${k}]`,r),outs=k=>$(`[data-out=${k}]`,r),fmt=n=>(n<0?'−':'')+'$'+Math.abs(Math.round(n)).toLocaleString();

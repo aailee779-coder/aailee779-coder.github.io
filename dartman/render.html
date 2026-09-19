@@ -1,0 +1,4 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><link rel="stylesheet" href="/fonts/fonts.css"><style>body{margin:0;background:#0a0a0c}#w{width:1600px;height:900px}canvas{width:100%;height:100%}</style></head>
+<body><div id="w"><canvas id="c"></canvas></div>
+<script type="module">import {mount} from '/dartman/edmini3d.js';window.api=await mount(document.getElementById('c'),{camera:'turntable',offsetX:0,autoRotate:false,interactive:false,ledFx:false,finish:new URLSearchParams(location.search).get('finish')||'black'});window.ready=true;</script>
+</body></html>
