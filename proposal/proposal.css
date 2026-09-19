@@ -46,3 +46,5 @@ ul.tight{margin:0;padding-left:4.5mm}ul.tight li{margin-bottom:1.2mm}
 @media (max-width:820px){.pg{width:100%;min-height:0;padding:22px 18px}.two,.three,.shots,.steps,.refs{grid-template-columns:1fr}.cover .grid{grid-template-columns:1fr}.gantt{grid-template-columns:32mm repeat(12,1fr);font-size:7pt}.bar{grid-template-columns:26mm 1fr 12mm}}
 
 .dense table td,.dense table th,table.dense td,table.dense th{padding:1.5mm 2mm;font-size:8.8pt}
+.plan5{display:grid;grid-template-columns:1fr 1fr;gap:4mm}.plan5 .pb{background:#F5F6F8;border-radius:3mm;padding:4mm 4.5mm}.plan5 .pb:first-child{grid-column:1/-1}
+.plan5 .pb .k{display:block;margin-bottom:1.5mm}.plan5 .pb b{display:block;font-size:14px;margin-bottom:2mm}.plan5 .pb p{font-size:11.6px;line-height:1.6;color:#3A3D46}.plan5 .pb p b{display:inline;font-size:inherit}

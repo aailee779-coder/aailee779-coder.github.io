@@ -53,3 +53,19 @@ const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<img alt=
 $$('.gallery figure').forEach(f=>f.addEventListener('click',()=>{lb.querySelector('img').src=$('img',f).src;lb.classList.add('open');}));
 $$('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
 })();
+
+/* ===== v5 homepage: marquees, film player, video + image lightbox ===== */
+(()=>{
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+/* duplicate marquee tracks so the loop is seamless */
+$$('.marq .track').forEach(t=>{t.innerHTML+=t.innerHTML;});
+/* big film */
+$$('[data-player]').forEach(pl=>{const v=$('video',pl),b=$('.play',pl);const go=()=>{pl.classList.add('on');v.muted=false;v.play();};b.addEventListener('click',go);v.addEventListener('play',()=>pl.classList.add('on'));v.addEventListener('pause',()=>{if(v.currentTime===0||v.ended)pl.classList.remove('on');});});
+/* lightbox */
+const lbx=document.createElement('div');lbx.className='lbx';lbx.innerHTML='<button class="x" aria-label="Close"><svg><use href="#i-close"/></svg></button><div class="body"></div><div class="cap"></div>';document.body.appendChild(lbx);
+const body=$('.body',lbx),cap=$('.cap',lbx);
+const close=()=>{lbx.classList.remove('open');body.innerHTML='';cap.textContent='';};
+lbx.addEventListener('click',e=>{if(e.target===lbx||e.target.closest('.x'))close();});addEventListener('keydown',e=>{if(e.key==='Escape')close();});
+$$('[data-zoom]').forEach(f=>f.addEventListener('click',()=>{const img=$('img',f);body.innerHTML=`<img src="${img.src}" alt="">`;cap.textContent=(f.querySelector('figcaption')||{}).textContent||img.alt||'';lbx.classList.add('open');}));
+$$('[data-video]').forEach(b=>b.addEventListener('click',()=>{body.innerHTML=`<video src="${b.dataset.video}" controls autoplay playsinline></video>`;cap.textContent=b.dataset.title||'';lbx.classList.add('open');}));
+})();
