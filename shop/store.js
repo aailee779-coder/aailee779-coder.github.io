@@ -109,6 +109,8 @@ const burger=$('.burger'),mnav=$('.mnav');burger&&burger.addEventListener('click
 gsap.registerPlugin(ScrollTrigger,SplitText);
 function reveal(){$$('.rv:not(.in)').forEach(el=>ScrollTrigger.create({trigger:el,start:'top 92%',once:true,onEnter:()=>el.classList.add('in')}));}reveal();
 if(!reduce){$$('[data-split]').forEach(h=>{const st=new SplitText(h,{type:'lines',linesClass:'line'});gsap.set(st.lines,{yPercent:100,opacity:0});gsap.to(st.lines,{yPercent:0,opacity:1,duration:1,stagger:.09,ease:'expo.out',delay:.1});});}
+/* lazy videos */
+$$('video[data-src]').forEach(v=>{const go=()=>{if(v.src)return;v.src=v.dataset.src;v.load();v.play().catch(()=>{});v.classList.add('on');};if(document.readyState==='complete')setTimeout(go,400);else addEventListener('load',()=>setTimeout(go,400));});
 /* hero tilt */
 const tilt=$('.prod3d');if(tilt&&matchMedia('(pointer:fine)').matches&&!reduce){const card=$('.card',tilt);addEventListener('pointermove',e=>{const r=tilt.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;gsap.to(card,{rotateY:x*22,rotateX:-y*18,duration:.6,ease:'power2.out'});});}
 $$('.marquee .track').forEach(t=>t.innerHTML+=t.innerHTML);

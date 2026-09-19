@@ -15,6 +15,8 @@ if(!reduce){$$('.caps, .prods, .proc, .stats, .bases').forEach(grid=>{const item
 (()=>{const cs=$$('canvas[data-globe]');if(!cs.length||!('WebGLRenderingContext' in window)||matchMedia('(max-width:760px)').matches)return;
   const go=async()=>{const mod=await import('/dayin/globe.js');cs.forEach(c=>{const wrap=c.parentElement;const labels=$$('.lbl',wrap);mod.mount(c,{focusLon:+(c.dataset.lon||108),focusLat:+(c.dataset.lat||18),dark:c.dataset.dark!==undefined,arcs:c.dataset.arcs!=='false',labels}).then(()=>c.classList.add('ready'));});};
   const idle=()=>('requestIdleCallback' in window?requestIdleCallback(go,{timeout:2500}):setTimeout(go,600));if(document.readyState==='complete')idle();else addEventListener('load',idle);})();
+/* lazy videos */
+$$('video[data-src]').forEach(v=>{const go=()=>{if(v.src)return;v.src=v.dataset.src;v.load();v.play().catch(()=>{});v.classList.add('on');};if(document.readyState==='complete')setTimeout(go,400);else addEventListener('load',()=>setTimeout(go,400));});
 /* fit finder */
 $$('[data-fit]').forEach(f=>{const out=$('.verdict',f);const ans={};
   $$('.chip[data-q]',f).forEach(b=>b.addEventListener('click',()=>{ans[b.dataset.q]=b.dataset.v;$$(`.chip[data-q="${b.dataset.q}"]`,f).forEach(x=>x.classList.toggle('on',x===b));verdict();}));

@@ -122,6 +122,8 @@ $$('[data-steps]').forEach(w=>{const steps=$$('.fstep',w),bar=$$('.steps-bar i',
 const lb=document.createElement('div');lb.className='lb';lb.innerHTML='<img alt="">';document.body.appendChild(lb);lb.addEventListener('click',()=>lb.classList.remove('open'));
 $$('.gallery figure, [data-zoom]').forEach(f=>f.addEventListener('click',()=>{const im=f.tagName==='IMG'?f:$('img',f);lb.querySelector('img').src=im.currentSrc||im.src;lb.classList.add('open');}));
 
+/* lazy videos */
+$$('video[data-src]').forEach(v=>{if(v.classList.contains('fallback-video')&&!v.parentElement.classList.contains('static'))return;const go=()=>{if(v.src)return;v.src=v.dataset.src;v.load();v.play().catch(()=>{});v.classList.add('on');};new IntersectionObserver((es,ob)=>{es.forEach(e=>{if(e.isIntersecting){ob.disconnect();('requestIdleCallback' in window?requestIdleCallback(go,{timeout:1500}):setTimeout(go,300));}})},{rootMargin:'200px'}).observe(v);});
 /* ticker duplicate */
 $$('.ticker .track').forEach(t=>{t.innerHTML+=t.innerHTML;});
 
