@@ -206,3 +206,5 @@ footer .about{color:rgba(255,255,255,.7);font-size:15px;max-width:44ch;margin-to
 .crumbs{font-size:13px;color:var(--muted);display:flex;gap:8px;margin-bottom:18px}.crumbs a:hover{color:var(--ink)}
 
 @media (max-width:600px){.logo{font-size:16px;white-space:nowrap}.logo small{display:none}.bbk-badge{font-size:9px;padding:6px 9px;left:10px;bottom:10px;max-width:70vw}.ann{font-size:12px}}
+.usp .wrap>div{min-width:0;overflow:hidden}.usp small{white-space:normal}
+@media (max-width:600px){.usp .wrap>div{font-size:12px;padding:12px 10px;gap:8px}.usp svg{width:18px;height:18px;flex-basis:18px}.hero .ghost{display:none}.hero .stats{gap:18px}}
