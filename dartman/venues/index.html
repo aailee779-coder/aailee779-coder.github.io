@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For venue owners — payback calculator, league flywheel, operator tools · DARTMAN Games</title>
+<meta name="description" content="What an EDmini does for a bar, arcade or entertainment venue: revenue per square metre, happy-hour pricing, ad rotation, and a league that keeps the machine on the floor.">
+<meta property="og:title" content="For venue owners — payback calculator, league flywheel, operator tools · DARTMAN Games"><meta property="og:description" content="What an EDmini does for a bar, arcade or entertainment venue: revenue per square metre, happy-hour pricing, ad rotation, and a league that keeps the machine on the floor."><meta property="og:type" content="website"><meta property="og:url" content="https://aailee779-coder.github.io/dartman/venues/"><meta property="og:image" content="https://aailee779-coder.github.io/assets/dartman/edmini-dark-bg.webp">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" href="/dartman/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/bigshouldersdisplay-900-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/barlow-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/dartman/site.css">
+
+</head>
+<body class="">
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="/dartman/" aria-label="DARTMAN Games home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="4" fill="currentColor"/><path d="M20 2v8M20 30v8M2 20h8M30 20h8" stroke="currentColor" stroke-width="2.5"/></svg>
+      <span>Dartman<small>Games</small></span>
+    </a>
+    <nav class="menu" aria-label="Primary">
+      <a href="/dartman/edmini/">EDmini</a>
+      <a href="/dartman/games/">Games</a>
+      <a href="/dartman/venues/" aria-current="page" class="on">For venues</a>
+      <a href="/dartman/dealers/">Dealers</a>
+      <a href="/dartman/locations/">Find a venue</a>
+      <a href="/dartman/about/">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn ghost sm" href="/dartman/contact/">Contact</a>
+      <a class="btn sm" href="/dartman/contact/#quote">Request a quote <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="/dartman/edmini/">EDmini</a><a href="/dartman/games/">Games</a><a href="/dartman/venues/">For venues</a><a href="/dartman/dealers/">Dealers</a><a href="/dartman/locations/">Find a venue</a><a href="/dartman/about/">About</a><a href="/dartman/contact/">Contact</a>
+  <p class="sub">DARTMAN Games · Dongguan · Bắc Ninh</p>
+</nav>
+
+<main id="main">
+
+<section class="hero compact">
+  <div class="stage photo"><img src="/assets/dartman/bar-scene-machine.webp" alt=""></div>
+  <div class="wrap"><span class="eyebrow rv">For venue owners</span><h1 data-split="lines" style="margin-top:18px;font-size:var(--h2)">The corner that<br><span class="h-accent">pays rent.</span></h1><p class="lead rv" data-d="1">A dart machine is 0.3 m² of floor that takes money every few minutes, sells drinks between throws, and brings the same faces back on league night.</p>
+  <div class="ctas rv" data-d="2" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:30px"><a class="btn" href="#roi">Run the numbers</a><a class="btn ghost" href="#consult">Book a venue consult</a></div></div>
+</section>
+<section class="sec tight" id="roi">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow rv">Payback</span><h2 data-split="lines" style="margin-top:18px">Your machine price.<br>Your game fee. Your maths.</h2></div><p class="lead rv" data-d="1">We deliberately don’t pre-fill a price. Put in the quote you receive and the fee your market accepts.</p></div>
+    <div class="roi rv" data-roi>
+      <div>
+        <h3>Inputs</h3>
+        <div class="field"><label>Machine price (enter yours) <output data-for="price" data-pre="$"></output></label><input type="range" name="price" min="1000" max="12000" step="100" value="4500"></div>
+        <div class="field"><label>Games per day per machine <output data-for="games"></output></label><input type="range" name="games" min="5" max="120" step="1" value="30"></div>
+        <div class="field"><label>Fee per game <output data-for="fee" data-pre="$"></output></label><input type="range" name="fee" min="0.5" max="5" step="0.25" value="1.5"></div>
+        <div class="field"><label>Open days per week <output data-for="days"></output></label><input type="range" name="days" min="3" max="7" step="1" value="6"></div>
+        <div class="field"><label>Machines <output data-for="machines"></output></label><input type="range" name="machines" min="1" max="8" step="1" value="2"></div>
+        <div class="field"><label>Extra drinks per game <output data-for="pergame"></output></label><input type="range" name="pergame" min="0" max="1" step="0.1" value="0.3"></div>
+        <div class="field"><label>Margin per drink <output data-for="drinks" data-pre="$"></output></label><input type="range" name="drinks" min="1" max="8" step="0.5" value="3"></div>
+      </div>
+      <div>
+        <div class="out"><div><b class="hi" data-out="pay">—</b><span>payback</span></div><div><b data-out="monthly">—</b><span>gross per month</span></div><div><b data-out="games">—</b><span>games per month</span></div><div><b data-out="year">—</b><span>year-1 net after machines</span></div></div>
+        <canvas aria-label="Cumulative profit chart over 24 months"></canvas>
+        <p class="note">Illustrative. Excludes electricity, floor rent, maintenance and league prize money. Not a quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sec line-top" id="flywheel">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow rv">The league flywheel</span><h2 data-split="lines" style="margin-top:18px">Where there’s a league,<br>the machine stays.</h2></div><p class="lead rv" data-d="1">The machine is the entry ticket. The league is the reason it never leaves.</p></div>
+    <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+      <div class="card rv"><div class="ic"><b class="num" style="font-size:26px">1</b></div><h3>Players sign in</h3><p>Every game is logged to a profile in the eDARTS app. Anonymous throws become known regulars.</p></div>
+      <div class="card rv" data-d="1"><div class="ic"><b class="num" style="font-size:26px">2</b></div><h3>Your venue is on the map</h3><p>Players looking for a board find you. Your machine is a destination, not furniture.</p></div>
+      <div class="card rv" data-d="2"><div class="ic"><b class="num" style="font-size:26px">3</b></div><h3>Season runs</h3><p>Weekly league night — same tables, same night, predictable bar revenue. Online matches against other venues.</p></div>
+      <div class="card rv" data-d="3"><div class="ic"><b class="num" style="font-size:26px">4</b></div><h3>Rankings feed back</h3><p>Venue leaderboards and rankings pull players back in. Then you add the second machine.</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec line-top" id="tools">
+  <div class="wrap">
+    <div class="feat">
+      <div class="media contain"><img loading="lazy" decoding="async" src="/assets/dartman/game-01-cricket.webp" alt="EDmini game screen"></div>
+      <div><span class="eyebrow rv">Operator tools</span><h3 class="rv" data-d="1">Pricing, promotion and ads —<br>from the machine.</h3>
+        <ul class="rv" data-d="2"><li><b>Happy-hour setting</b> — cheaper games when the room is empty</li><li><b>Advertising rotation</b> — your own drink specials on a 21.5″ screen at eye level</li><li><b>Game promotion</b> — feature party games for the Saturday crowd</li><li><b>Coin / credit setting</b> — coin, token or card</li><li><b>Store &amp; machine management</b> — multiple machines, one view</li></ul></div>
+    </div>
+    <div class="feat rev">
+      <div class="media"><img loading="lazy" decoding="async" src="/assets/dartman/easy-move.webp" alt="One person moving EDmini"></div>
+      <div><span class="eyebrow rv">Day one</span><h3 class="rv" data-d="1">Installed by one person.<br>Repaired by module.</h3><p class="rv" data-d="2">EDmini arrives in three cartons, assembles without tools and stands on 58 × 35 cm of floor. When something fails, the module is swapped — the machine stays on the floor.</p>
+        <div class="stats rv" data-d="3" style="margin-top:24px;grid-template-columns:repeat(3,1fr)"><div class="stat"><div class="num"><span data-count="65">0</span><small>kg</small></div><p>net weight</p></div><div class="stat"><div class="num"><span data-count="11">0</span><small>cm</small></div><p>head depth</p></div><div class="stat"><div class="num"><span data-count="3">0</span></div><p>cartons</p></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="sec line-top" id="consult">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div><span class="eyebrow rv">Venue consult</span><h2 data-split="lines" style="margin-top:18px;font-size:var(--h3)">Tell us about the room.</h2><p class="prose rv" data-d="1" style="margin-top:16px">Ceiling height, the corner you have in mind, how many nights you’re open. We’ll come back with a layout suggestion, the right assembly style and a quote from the nearest dealer.</p>
+        <div class="addr rv" data-d="2" style="margin-top:26px"><div><span class="k">What you’ll get</span><h4>Layout + quote</h4><p>Floor-plan sketch, assembly style, shipping origin (China or Vietnam), dealer contact.</p></div></div></div>
+      <form class="form rv" data-demo="Thanks — a venue specialist will reply. (Design preview: nothing was sent.)" data-d="1">
+        <div class="row"><label>Your name<input name="name" required><span class="err">Required</span></label><label>Venue name<input name="venue" required><span class="err">Required</span></label></div>
+        <div class="row"><label>Email<input type="email" name="email" required><span class="err">Valid email required</span></label><label>Country / city<input name="country" required><span class="err">Required</span></label></div>
+        <div class="row"><label>Venue type<select name="type"><option>Bar / pub</option><option>Arcade / FEC</option><option>Dart hall</option><option>Hotel / resort</option><option>Other</option></select></label><label>Machines you’re considering<select name="qty"><option>1</option><option>2–3</option><option>4–8</option><option>9+</option></select></label></div>
+        <label>Anything else<textarea name="msg" placeholder="Ceiling height, current machines, league plans…"></textarea></label>
+        <div><button class="btn" type="submit">Send request <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><p class="hint" style="margin-top:12px">Replies come from a person. No newsletter.</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="/dartman/"><svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="2.5"/><circle cx="20" cy="20" r="4" fill="currentColor"/><path d="M20 2v8M20 30v8M2 20h8M30 20h8" stroke="currentColor" stroke-width="2.5"/></svg><span>Dartman<small>Games</small></span></a>
+        <p class="about">EDmini is designed and manufactured by the DAYIN group — injection-molding and electronics assembly in Dongguan since 1989, with a second plant in Bắc Ninh, Vietnam since 2024.</p>
+        <div class="social">
+          <a href="https://www.youtube.com/watch?v=t-IB9tCa_yA" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-3.2.5-4.8s-.1-3.2-.5-4.8zM9.7 15.5v-7l6.3 3.5z"/></svg></a>
+          <a href="https://lin.ee/7REtzGi" target="_blank" rel="noopener" aria-label="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 5.7 2 10.2c0 4 3.6 7.4 8.4 8.1.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.8-3.4 7.9-5.8C21.4 13.9 22 12.1 22 10.2 22 5.7 17.5 2 12 2z"/></svg></a>
+          <a href="#" aria-label="LinkedIn (to be linked)" title="To be linked"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4z"/></svg></a>
+          <a href="#" aria-label="Instagram (to be linked)" title="To be linked"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="/dartman/edmini/">EDmini</a></li><li><a href="/dartman/edmini/#specs">Specifications</a></li><li><a href="/dartman/edmini/#config">Finishes</a></li><li><a href="/dartman/games/">Games &amp; apps</a></li></ul></div>
+      <div><h4>Business</h4><ul><li><a href="/dartman/venues/">For venue owners</a></li><li><a href="/dartman/venues/#roi">Payback calculator</a></li><li><a href="/dartman/dealers/">Dealer program</a></li><li><a href="/dartman/locations/">Find a venue</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/dartman/about/">About DARTMAN</a></li><li><a href="https://www.madeindayin.com" target="_blank" rel="noopener">DAYIN group ↗</a></li><li><a href="/dartman/contact/">Contact</a></li><li><a href="/dartman/before-after/">Site redesign: before / after</a></li></ul></div>
+    </div>
+    <div class="fbottom">
+      <span>© <span data-year></span> DARTMAN Games · No.220 Zhen'an West Road, Chang'an, Dongguan · Bắc Ninh, Vietnam</span>
+      <span>Privacy · Terms · <span class="tbc">contact email to be confirmed</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="bbk-badge" aria-label="Concept preview"><b>Concept by BBK Media and Technology</b> · design preview · demo data</div>
+<script src="/vendor/gsap.min.js"></script><script src="/vendor/ScrollTrigger.min.js"></script><script src="/vendor/SplitText.min.js"></script><script src="/vendor/lenis.min.js"></script>
+<script src="/dartman/site.js"></script>
+
+</body>
+</html>
