@@ -23,7 +23,7 @@ function enter(s,items,i,back){
   /* headline lines */
   const ls=$$('h1 .l',s);if(ls.length)gsap.fromTo(ls,{yPercent:60,opacity:0},{yPercent:0,opacity:1,duration:1.2,stagger:.12,ease:'expo.out',delay:.1});
   /* counters */
-  $$('[data-count]',s).forEach(el=>{const to=+el.dataset.count;const o={v:0};gsap.to(o,{v:to,duration:1.4,ease:'power3.out',delay:.3,onUpdate:()=>el.textContent=Math.round(o.v)});});
+  $$('[data-count]',s).forEach(el=>{const to=+el.dataset.count;const o={v:0};gsap.to(o,{v:to,duration:1.4,ease:'power3.out',delay:.3,onUpdate:()=>el.textContent=Math.round(o.v).toLocaleString('en-US')});});
   /* bars */
   $$('[data-bar]',s).forEach((b,k)=>setTimeout(()=>b.style.setProperty('--w',b.dataset.bar+'%'),200+k*60));
 }
